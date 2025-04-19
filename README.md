@@ -33,5 +33,11 @@
 pipenv install langchain-openai
 pipenv install langchain-community
 pipenv install langchainhub
+pipenv install black
 ```
 종속성 목록은 필요에 따라 향후 업데이트될 수 있음
+
+4. 들여쓰기 자동화
+  * pipenv install black 종속성 설치 <br>
+   (C:\Users\hammo\AppData\Roaming\Python\Python313\Scripts 이 경로가 시스템 PATH 환경 변수에 정확하게 등록되있는지 확인)
+  * 코드 작성후 ``` black . ```  입력 (뒤에 점까지 black 하고 한칸 띄고 작성해야함)
