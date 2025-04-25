@@ -1,6 +1,8 @@
 from dotenv import load_dotenv
 from langchain.prompts.prompt import PromptTemplate
+from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI
+from langchain_ollama import ChatOllama
 
 if __name__ == "__main__":
     load_dotenv()  # .env 파일에서 환경변수 로드
@@ -25,12 +27,16 @@ if __name__ == "__main__":
         input_variables=["information"], template=summary_template
     )
 
-    llm = ChatOpenAI(
-        temperature=0, model_name="gpt-3.5-turbo"
-    )  # temperature => 텍스트의 무작위성을 조절하는 값(=>수치가 1에 가까울수록 창의적 , 부정확해짐)
+    #llm = ChatOpenAI(
+    #   temperature=0, model_name="gpt-3.5-turbo"
+    #)  # temperature => 텍스트의 무작위성을 조절하는 값(=>수치가 1에 가까울수록 창의적 , 부정확해짐)
+
+    # llm => 객체임
+    llm = ChatOllama(model="llama3")
+
 
     chain = (
-        summary_prompt_template | llm
+        summary_prompt_template | llm | StrOutputParser()
     )  # | => 앞의 출력을 뒤로 넘겨줌 (=  summary_prompt_template 를 llm(언어모델) 에 넘겨줌)
     res = chain.invoke(input={"information": information})
 

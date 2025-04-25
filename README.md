@@ -35,6 +35,7 @@ pipenv install langchain-community
 pipenv install langchainhub
 pipenv install black
 pipenv install python-dotenv
+pipenv install install langchain-ollama
 ```
 패키지 목록은 필요에 따라 향후 업데이트될 수 있음
 
