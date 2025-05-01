@@ -11,7 +11,6 @@ if __name__ == "__main__":
 
     print("Hello LangChain")
 
-
     # 1, 2번은 => 명령어처럼 생기지 않아도 GPT는 그것을 요청으로 인식하고 응답
     summary_template = """ 
     given the Linkedin information {information}  about a person I want you to create:
@@ -35,7 +34,9 @@ if __name__ == "__main__":
         summary_prompt_template | llm
     )  # | => 앞의 출력을 뒤로 넘겨줌 (=  summary_prompt_template 를 llm(언어모델) 에 넘겨줌)
 
-    linkedin_data = scrape_linkedin_profile(linkedin_profile_url="https://www.linkedin.com/in/eden-marco/")
+    linkedin_data = scrape_linkedin_profile(
+        linkedin_profile_url="https://www.linkedin.com/in/eden-marco/"
+    )
     res = chain.invoke(input={"information": linkedin_data})
 
     print(res)
