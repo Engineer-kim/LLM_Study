@@ -1,6 +1,4 @@
-import os
 from dotenv import load_dotenv
-from langchain.chains.summarize.refine_prompts import prompt_template
 
 from tools.tools import get_profile_url
 
